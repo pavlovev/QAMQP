@@ -111,7 +111,10 @@ void ClientPrivate::parseCnnString( const QUrl & con )
 		q->setSsl(con.scheme() == AMQPSSCHEME);
 		q->setPassword(con.password());
 		q->setUser(con.userName());
-		q->setPort(con.port());
+
+        if (con.port() != -1)
+            q->setPort(con.port());
+
 		q->setHost(con.host());				
 		q->setVirtualHost(con.path());
 	}
